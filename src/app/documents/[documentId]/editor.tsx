@@ -4,9 +4,11 @@ import StarterKit from '@tiptap/starter-kit'
 import TaskItem from '@tiptap/extension-task-item'
 import TaskList from '@tiptap/extension-task-list'
 import Image from '@tiptap/extension-image'
+import Link from '@tiptap/extension-link'
 import ImageResize from 'tiptap-extension-resize-image'
 import TextStyle from '@tiptap/extension-text-style'
-
+import { Color } from '@tiptap/extension-color'
+import Highlight from '@tiptap/extension-highlight'
 import FontFamily from '@tiptap/extension-font-family'
 import Table from '@tiptap/extension-table'
 import TableCell from '@tiptap/extension-table-cell'
@@ -48,7 +50,22 @@ export const Editor = () =>{
         class : "focus:outline-none print:border-0 bg-white border border-[#C7C7C7] flex flex-col min-h-[1054px] w-[816px] pt-10 pr-14 pb-10 cursor-text"
             }
         },
-        extensions: [StarterKit,Image,FontFamily,TextStyle,Underline,ImageResize,Table,TableCell,TableHeader,TableRow,TaskItem.configure({nested : true}),TaskList],
+        extensions: [
+            StarterKit,
+            Image,FontFamily,TextStyle,Underline,
+            ImageResize,Table,TableCell,TableHeader,
+            TableRow,
+            TaskItem.configure({nested : true}),
+            TaskList,
+            Color,Highlight.configure({
+                multicolor : true
+            }),
+            Link.configure({
+                openOnClick : false,
+                autolink : true,
+                defaultProtocol : "https"
+            })
+        ],
         content: `
         <table>
           <tbody>
