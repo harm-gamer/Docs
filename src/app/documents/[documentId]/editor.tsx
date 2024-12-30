@@ -12,6 +12,7 @@ import Highlight from '@tiptap/extension-highlight'
 import FontFamily from '@tiptap/extension-font-family'
 import Table from '@tiptap/extension-table'
 import TableCell from '@tiptap/extension-table-cell'
+import TextAlign from '@tiptap/extension-text-align'
 import Underline from '@tiptap/extension-underline'
 import TableHeader from '@tiptap/extension-table-header'
 import TableRow from '@tiptap/extension-table-row'
@@ -64,6 +65,9 @@ export const Editor = () =>{
                 openOnClick : false,
                 autolink : true,
                 defaultProtocol : "https"
+            }),
+            TextAlign.configure({
+                types : ["heading","paragraph"]
             })
         ],
         content: `
