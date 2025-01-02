@@ -17,9 +17,12 @@ import Underline from '@tiptap/extension-underline'
 import TableHeader from '@tiptap/extension-table-header'
 import TableRow from '@tiptap/extension-table-row'
 import { useEditorStore } from '@/store/use-editor-store' 
+import { FontSizeExtension } from '@/extensions/font-size'
+
 export const Editor = () =>{
 
     const {setEditor} = useEditorStore();
+
     const editor = useEditor({
         onCreate({editor}) {
             setEditor(editor)
@@ -53,6 +56,7 @@ export const Editor = () =>{
         },
         extensions: [
             StarterKit,
+            FontSizeExtension,
             Image,FontFamily,TextStyle,Underline,
             ImageResize,Table,TableCell,TableHeader,
             TableRow,
