@@ -3,7 +3,7 @@
 import { Authenticated, AuthLoading, ConvexReactClient, Unauthenticated } from "convex/react";
 import { ReactNode } from "react";
 import {ConvexProviderWithClerk} from "convex/react-clerk"
-import {ClerkProvider,SignIn,useAuth} from "@clerk/clerk-react"
+import {ClerkProvider,SignIn,useAuth} from "@clerk/nextjs"
 import { FullscreenLoader } from "./fullscreen-loader";
 const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 
