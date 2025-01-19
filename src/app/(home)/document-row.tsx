@@ -5,16 +5,20 @@ import {SiGoogledocs} from "react-icons/si"
 import { Building2Icon, CircleUserIcon, MoreVertical } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DocumentMenu } from "./DocumentMenu";
+import { useRouter } from "next/navigation";
 interface DocumetRowProps{
     document : Doc<"documents">;
 }
 
 export const DocumentRow = ({document} : DocumetRowProps) =>{
+    const router = useRouter();
     const onNewTabClick = (id:string) =>{
         window.open(`/documents/${id}`,"_blank")
     }
+
+    
     return (
-        <TableRow className="cursor-pointer">
+        <TableRow  onClick={()=>  router.push(`/documents/${document._id}`)} className="cursor-pointer">
         <TableCell className="w-[50px]">
          <SiGoogledocs className="size-6 fill-blue-500"/>
         </TableCell>
@@ -32,7 +36,7 @@ export const DocumentRow = ({document} : DocumetRowProps) =>{
             <DocumentMenu
              documentId={document._id}
              title={document.title}
-             onNewTab={onNewTabClick}
+             onNewTab={() => window.open(`documents/${document._id}`,"_blank")}
             />
         </TableCell>
         </TableRow>
