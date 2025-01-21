@@ -9,6 +9,7 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { set } from "date-fns";
+import { toast } from "sonner";
 
 
 interface RenameDialogProps{
@@ -31,9 +32,9 @@ export const RenameDialog = ({documentId,children,initialTitle}: RenameDialogPro
 
         update({id : documentId, title : title.trim() || "Untitled"})
         .then(() => setOpen(false))
+        .catch(() =>toast.error("Something went wrong"))
+                        .then(() => toast.success("Document updated"))
         .finally(() =>{
-            setIsUpdating(false)
-            
         })
     }
 return (
