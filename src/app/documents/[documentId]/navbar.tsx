@@ -18,10 +18,15 @@ import {
  } from "@/components/ui/menubar"
 import { BsFilePdf } from "react-icons/bs"
 import { useEditorStore } from "@/store/use-editor-store"
-import { escape } from "querystring"
 import { OrganizationSwitcher, UserButton } from "@clerk/nextjs"
 import { Avatars } from "./avatars"
-export const Navbar = () =>{
+import { Inbox } from "./inbox"
+import { Doc } from "../../../../convex/_generated/dataModel"
+
+interface NavbarProps{
+    data : Doc<"documents">
+}
+export const Navbar = ({data} : NavbarProps) =>{
 
     const {editor} = useEditorStore();
 
@@ -45,7 +50,7 @@ export const Navbar = () =>{
             type : "application/json"
         })
 
-        onDownload(blob,`download.json`)
+        onDownload(blob,`${data.title}.json`)
     }
     const onSaveHTML = () =>{
         if(!editor) return;
@@ -55,7 +60,7 @@ export const Navbar = () =>{
             type : "text/html"
         })
 
-        onDownload(blob,`download.html`)
+        onDownload(blob,`${data.title}.html`)
     }
     const onSaveText = () =>{
         if(!editor) return;
@@ -65,7 +70,7 @@ export const Navbar = () =>{
             type : "text/plain"
         })
 
-        onDownload(blob,`download.txt`)
+        onDownload(blob,`${data.title}.txt`)
     }
     return (
         <nav className="flex items-center justify-between">
@@ -74,7 +79,7 @@ export const Navbar = () =>{
           <Image src="/logo.svg" alt="logo" height={36} width={36}/>  
           </Link>
           <div className="flex flex-col">
-            <DocumentInput/>
+            <DocumentInput title={data.title} id={data._id}/>
             <div className="flex">
                 <Menubar className="border-none bg-transparent shadow-none h-auto p-0">
                     <MenubarMenu>
@@ -210,6 +215,7 @@ export const Navbar = () =>{
           </div>
           <div className="flex gap-3 items-center pl-6">
             <Avatars/>
+            <Inbox/>
     <OrganizationSwitcher
     afterCreateOrganizationUrl="/"
     afterLeaveOrganizationUrl="/"
