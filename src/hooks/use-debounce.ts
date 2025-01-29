@@ -9,6 +9,10 @@ export function useDebounce<T extends (...args : Parameters<T>) => ReturnType<T>
             if(timeoutRef.current){
                 clearTimeout(timeoutRef.current)
             }
-        }
-    )
-}
+            timeoutRef.current = setTimeout(() =>{
+                callback(...args);
+            },delay)
+        },
+        [callback,delay],
+    );
+};
