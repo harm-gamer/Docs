@@ -12,6 +12,7 @@ import { toast } from "sonner";
 import { getUsers,getDocuments } from "./actions";
 import { POST } from "@/app/api/liveblocks-auth/route";
 import { Id } from "../../../../convex/_generated/dataModel";
+import { LEFT_MARGIN_DEFALUT, RIGHT_MARGIN_DEFALUT } from "@/constant/margin";
 
 type User = {id : string; name : string; avatar : string}
 export function Room({ children }: { children: ReactNode }) {
@@ -64,7 +65,7 @@ export function Room({ children }: { children: ReactNode }) {
         }))
       }}
     >
-      <RoomProvider id={params.documentId as string} initialStorage={{leftMargin : 56,rightMargin : 56}}>
+      <RoomProvider id={params.documentId as string} initialStorage={{leftMargin : LEFT_MARGIN_DEFALUT,rightMargin : RIGHT_MARGIN_DEFALUT}}>
         <ClientSideSuspense fallback={<FullscreenLoader label="Room loading..."/>}>
           {children}
         </ClientSideSuspense>
