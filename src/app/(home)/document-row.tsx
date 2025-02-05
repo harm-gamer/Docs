@@ -2,8 +2,8 @@ import { TableCell, TableRow } from "@/components/ui/table";
 import { Doc } from "../../../convex/_generated/dataModel"
 import {format} from "date-fns"
 import {SiGoogledocs} from "react-icons/si"
-import { Building2Icon, CircleUserIcon, MoreVertical } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Building2Icon, CircleUserIcon} from "lucide-react";
+
 import { DocumentMenu } from "./DocumentMenu";
 import { useRouter } from "next/navigation";
 interface DocumetRowProps{
@@ -12,9 +12,9 @@ interface DocumetRowProps{
 
 export const DocumentRow = ({document} : DocumetRowProps) =>{
     const router = useRouter();
-    const onNewTabClick = (id:string) =>{
-        window.open(`/documents/${id}`,"_blank")
-    }
+    // const onNewTabClick = (id:string) =>{
+    //     window.open(`/documents/${id}`,"_blank")
+    // }
 
     
     return (

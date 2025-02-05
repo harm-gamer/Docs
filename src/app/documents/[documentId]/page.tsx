@@ -4,7 +4,6 @@ import { Id } from "../../../../convex/_generated/dataModel";
 import {preloadQuery} from "convex/nextjs"
 import { Document } from "./document";
 import { api } from "../../../../convex/_generated/api";
-import { ConvexError } from "convex/values";
 import { auth } from "@clerk/nextjs/server";
 
 interface DocumentIdProps {

@@ -10,11 +10,11 @@ import { useParams } from "next/navigation";
 import { FullscreenLoader } from "@/components/fullscreen-loader";
 import { toast } from "sonner";
 import { getUsers,getDocuments } from "./actions";
-import { POST } from "@/app/api/liveblocks-auth/route";
+
 import { Id } from "../../../../convex/_generated/dataModel";
 import { LEFT_MARGIN_DEFALUT, RIGHT_MARGIN_DEFALUT } from "@/constant/margin";
 
-type User = {id : string; name : string; avatar : string}
+type User = {id : string; name : string; avatar : string; color : string}
 export function Room({ children }: { children: ReactNode }) {
     const params = useParams();
 
@@ -44,6 +44,7 @@ export function Room({ children }: { children: ReactNode }) {
           })
           return await response.json()
       }}
+      //@ts-ignore
       resolveUsers={({userIds}) => {
         return userIds.map((userId) => users.find((user) => user.id == userId)?? undefined )
       }}

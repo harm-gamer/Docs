@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { ExternalLinkIcon, FilePenIcon, icons, MoreVertical, TrashIcon } from "lucide-react"
+import { ExternalLinkIcon, FilePenIcon,  MoreVertical, TrashIcon } from "lucide-react"
 import { Id } from "../../../convex/_generated/dataModel"
 import { DropdownMenu, DropdownMenuContent } from "@/components/ui/dropdown-menu";
 import { DropdownMenuItem, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
